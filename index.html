@@ -18,6 +18,24 @@
             padding: 20px;
             text-align: center;
         }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            vertical-align: middle;
+        }
         .hero {
             background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
             height: 500px;
@@ -83,6 +101,14 @@
     <h1>Welcome to Our Landing Page</h1>
 </header>
 
+<div class="slider">
+    <div class="slides">
+        <div class="slide"><img src="https://via.placeholder.com/1500x500/FF5733/FFFFFF?text=Slide+1" alt="Slide 1"></div>
+        <div class="slide"><img src="https://via.placeholder.com/1500x500/33FF57/FFFFFF?text=Slide+2" alt="Slide 2"></div>
+        <div class="slide"><img src="https://via.placeholder.com/1500x500/3357FF/FFFFFF?text=Slide+3" alt="Slide 3"></div>
+    </div>
+</div>
+
 <section class="hero">
     <h1>Your Success Starts Here</h1>
 </section>
@@ -114,6 +140,17 @@
         <button type="submit">Send Message</button>
     </form>
 </section>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelector('.slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, 3000);
+</script>
 
 </body>
 </html>
